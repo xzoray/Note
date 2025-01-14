@@ -21,13 +21,22 @@ main {
     margin: 0 30px;
     max-height: 100vh;
     flex: 1;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .inputSection {
     display: flex;
+    align-items: center;
     flex-direction: column;
     gap: 10px;
-    width: 200px;
+    width: 300px;
+}
+
+.insertField {
+    border: 2px solid  rgb(0, 247, 255);
+    width: 250gopx;
 }
 
 .saveButton {
