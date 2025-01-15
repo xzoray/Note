@@ -18,9 +18,9 @@ function renderNotes() {
 }
 
 function getNoteTemplate(i) {
-    return `<div id="note">
+    return `<div class="note" id="note">
                 <h3>${noteTitles[i]}:</h3>
-                <p class="note">${notes[i]}</p>
+                <p>${notes[i]}</p>
                 <div class="buttonContainer">
                     <button onclick="pushToTrash(${i})" class="deleteButton">X</button>
                 </div>
@@ -37,9 +37,9 @@ function renderTrashNotes() {
 }
 
 function getTrashNoteTemplate(i) {
-    return `<div id="note">
+    return `<div class="note" id="note">
                 <h3>${trashNoteTitles[i]}:</h3>
-                <p class="note">${trashNotes[i]}</p>
+                <p>${trashNotes[i]}</p>
                 <div class="buttonContainer">
                     <button onclick="deleteNote(${i})" class="deleteButton">X</button>
                 </div>
@@ -81,6 +81,10 @@ function pushToTrash(i) {
     trashNoteTitles.push(trashTitle[0])
     let trashNote = notes.splice(i, 1);
     trashNotes.push(trashNote[0])
+    localStorage.setItem('TrashTitle', JSON.stringify( trashNoteTitles));
+    localStorage.setItem('TrashNote', JSON.stringify(trashNotes));
+    localStorage.removeItem('Title');
+    localStorage.removeItem('Note')
     renderNotes();
     renderTrashNotes();
 }
